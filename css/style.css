@@ -1,0 +1,318 @@
+:root {/*-- sets color variables --*/
+    --dark: #3d443c;
+    --ltmid: #a0af9f;
+    --dkmid: #4f5f4d;
+    --light: #a7b6a5;
+    --accent: #738371;
+  }
+  body {
+    color: var(--dark); /*-- sets body default font color --*/
+    line-height: 1.4; /*-- sets body default line height --*/
+    background-color: #595f59;
+  }
+  /*-- default styles for links (in the correct order) --*/
+  a {color: var(--accent); font-weight: 500; text-decoration: none; transition: all .25s ease-in-out;}
+  a:visited {color:#485247;}
+  a:hover {color: var(--accent);}
+  a:active {color: var(--dkmid);}
+  
+  header.top-nav {
+    background-color: var(--ltmid);
+    padding: 1rem 2rem 1rem 0;
+    display: flex;
+    min-height: 8rem;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+  nav {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: space-between;
+  }
+  a.nav-link {
+    padding-left: 2.8rem;
+    color: var(--dark);
+    font-weight: 500;
+    text-decoration: none;
+    transition: all .25s ease-in-out;
+  }
+  a.nav-link:hover {
+    color: #354d32;
+  
+  }
+  a.nav-link.logo {
+    text-transform: uppercase;
+    font-weight: 900;
+  }
+  a#trigram {
+    display: none;
+  }
+  a#trigram::before {
+    content: '\2630';
+    font-size: 4rem;
+    position: relative;
+    top: -.5rem;
+    right: 0;
+  }
+  .none {
+    display: none;
+  }
+  @media screen and (max-width: 990px) {
+    .nav-wrap {
+      display: none;
+    }
+    .nav-wrap.mobile {
+      position:absolute;
+      z-index: 10;
+      top: 7rem;
+      right: 0;
+      width: 100%;
+      padding: 0 2rem 2rem 2rem;
+      background: var(--ltmid);
+      display: flex; 
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-around;
+    }
+    .nav-wrap.mobile a {
+      display: block;
+      width: 100%;
+      text-align: right;
+      padding: 2rem 2rem;
+      margin: 0;
+    }
+    .nav-wrap.mobile a:hover {
+      background-color: var(--light);
+    }
+    a#trigram {
+      display: inherit;
+    }
+    a#trigram.tri-mobile::before {
+      content: '\00D7';
+    }
+  }
+  @media screen and (max-width: 990px) {
+    .nav-wrap {
+      display: none;
+    }
+  }
+  main {
+    padding: 1rem 2rem; /*-- adds inside space around the main content area --*/
+  }
+  .slideshow { /*-- replace these styles with your slideshow styles --*/
+    display: flex; /*-- declares a flex container --*/
+    justify-content: center; /*-- center in the main axis --*/
+    align-items: center; /*-- center in the cross axis --*/
+    border: 2px solid var(--dkmid); /*-- unsubtle border --*/
+    background-color: #121312;
+    color: var(--dkmid); /*-- text color is mid --*/
+    position: relative; /*-- allows explicit positioning for children --*/
+  }
+  .slides{
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+  .controls button { /*-- you'll probably replace all .controls styles with your own --*/
+    cursor: pointer; /*-- changes hover cursor to the hand --*/
+    position: absolute; /*-- positions arrows absolutely--*/
+    width: auto; /*-- matches width of parent --*/
+    top: 40%; /*-- positions arrows from parent top --*/
+    color: var(--ltmid); /*-- arrow color --*/
+    background-color: transparent; /*-- hides button background --*/
+    border: none; /*-- removes default button border --*/
+    font-weight: 800; /*-- selects heavier font --*/
+    font-size: 8rem; /*-- sets arrow font size --*/
+    transition: 0.25s ease; /*-- sets transition speed for arrow hover--*/
+  }
+  .controls button:hover {
+    color: #738371 /*-- changes button color on hover --*/
+  
+  }
+  .controls button:nth-child(1) {
+    left: 1rem; /*-- positions first arrow to the left --*/
+  }
+  .controls button:nth-child(2) {
+    right: 1rem; /*-- positions second arrow to the right --*/
+  }
+  .slideshow h2 { /*-- styles the placeholder text (probably safe to delete) --*/
+    font-size: 4rem; /*-- font is larger than normal --*/
+  }
+  .pics {
+    display: flex;
+    gap: 1rem;
+  }
+  .pics img {
+    opacity: .5;
+    cursor: pointer;
+    transition: all .25s ease-in-out;
+    border: 2px dotted transparent;
+  }
+  .pics img:hover, img.active {
+    opacity: 1;
+  }
+  .grid-cont { /*-- styles the main grid container for media cards --*/
+    padding: 2rem 0; /*-- top and bottom padding for the grid container --*/
+    display: grid; /*-- declares this a grid container --*/
+    grid-gap: 2rem; /*-- 2rem top, right, bottom, and left gaps between items --*/
+    grid-template-columns: 1fr; /*-- by default, there is 1 column that's 1fr wide --*/
+  }
+  @media screen and (min-width: 550px) { /*-- at slightly larger size, there are two equal columns --*/
+    .grid-cont {grid-template-columns: repeat(2, 1fr);}
+  }
+  @media screen and (min-width: 768px) { /*-- still two equal columns --*/
+    .grid-cont {grid-template-columns: repeat(2, 1fr);}
+  }
+  @media screen and (min-width: 1280px) { /*-- next size up, there are three equal columns --*/
+    .grid-cont {grid-template-columns: repeat(3, 1fr);}
+  }
+  @media screen and (min-width: 1440px) { /*-- at the largest sizes, there are four equal columns --*/
+    .grid-cont {grid-template-columns: repeat(4, 1fr);}
+  }
+  .card { /*-- selects .card elements --*/
+    padding: 2%; /*-- a little bit of flexible space inside the card --*/
+    display: flex; /*-- card is a flex container --*/
+    flex-direction: column; /*-- flow is downward --*/
+    border-radius: 8px; /*-- curved edges --*/
+    border: 3px solid var(--dkmid); 
+    background-color: #738371; /*-- a little bit of light color --*/
+  }
+  .card img { /*-- selects image children of .card --*/
+    width: 100%; /*-- full width of container --*/
+    height: auto; /*-- maintain aspect ratio --*/
+    max-height: 350px; /*-- can't be too tall --*/
+    border-radius: 8px 8px 0 0; /*-- curved corners, but just on the top --*/
+  }
+  .card button { /*-- selects button children of .card elements --*/
+    width: 30%; /*-- 1/3rd width of parent (the .card) --*/
+    min-width: 6rem; /*-- can't be too narrow --*/
+    margin: 2rem auto; /*-- centered it --*/
+    padding: 1rem 2rem; /*-- makes space inside the button --*/
+    cursor: pointer; /*-- changes the mouse cursor from arrow to pointer --*/
+  }
+  footer { /*-- just some footer styles, nothing weird --*/
+    margin-top: 2rem; /*-- adds space above --*/
+    background-color: var(--ltmid); /*-- light mid color --*/
+    padding: 1rem 2rem; /*-- inside space to match the nav --*/
+    display: flex; /*-- might as well --*/
+    height: 6rem; /*-- fixed height  --*/
+    justify-content: space-between; /*-- horizontal center --*/
+    align-items: center; /*-- vertical center --*/
+  }
+  footer p { /*-- targets the footer text --*/
+    width: 100%; /*-- p elements are full width of the container --*/
+    text-align: center; /*-- centers the text --*/
+    font-weight: 500; /*-- mid-weight font --*/
+  }
+  #modal-wrap {
+    display: none;
+    position: fixed;
+    z-index: 12;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(30,30,30,0.95);
+  }
+  #modal-wrap.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5%;
+    overflow: scroll;
+  }
+  #modal-wrap.show .card-content {
+    position: relative;
+    width: 120rem;
+    margin: auto;
+    background-color: var(--light);
+    color: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0 2%;
+    border: 2px solid var(--light);
+    animation: fadein .3s ease-in-out;
+  }
+  #modal-wrap.show .card-content p {
+    -webkit-line-clamp: none;
+  }
+  #modal-wrap.show .card-content p:not(:first-of-type) {
+    display: inherit;
+  }
+  #photo {
+    height: 30rem;
+    width: auto;
+  }
+  .caption-wrap{
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: 1%;
+    height: 6rem;
+    background-color: rgba(0,0,0,50%);
+    color:#ffffff;
+    }
+    .open-modal {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid #4f4f4f;
+      border-radius: 4px;
+      transition: all 0.25s ease-in;
+      position: relative;
+      overflow: hidden;
+      font-size: 15px;
+      color: black;
+      z-index: 1;
+      height: 5rem;
+      margin-left: 5em;
+      margin-right: 5em;
+    
+     }
+     
+     .open-modal:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) scaleY(1) scaleX(1.25);
+      top: 100%;
+      width: 140%;
+      height: 180%;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 50%;
+      display: block;
+      transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+      z-index: -1;
+     }
+     
+     .open-modal:after {
+      content: "";
+      position: absolute;
+      left: 55%;
+      transform: translateX(-50%) scaleY(1) scaleX(1.45);
+      top: 180%;
+      width: 160%;
+      height: 190%;
+      background-color: #444;
+      border-radius: 50%;
+      display: block;
+      transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+      z-index: -1;
+     }
+     .open-modal:hover {
+      color: #ffffff;
+      border: 1px solid #0c0e0c;
+     }
+     
+     .open-modal:hover:before {
+      top: -35%;
+      background-color: #070807;
+      transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+     }
+     
+     .open-modal:hover:after {
+      top: -45%;
+      background-color: #000000;
+      transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+     }
+  
